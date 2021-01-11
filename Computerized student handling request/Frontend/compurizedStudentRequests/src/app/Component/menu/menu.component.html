@@ -1,0 +1,89 @@
+<div class="menu-list">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="d-xl-none d-lg-none" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-divider">
+                    Menu
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" aria-expanded="false" href="/dashboard" routerLink="/dashboard">
+                        <i class="fas fa-fw fa-table"></i>Dashboard</a>
+                </li>
+                <li class="nav-item " *ngIf="studentMenu">
+                    <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
+                        <i class="fa fa-fw fa-user-circle"></i>Student Requests <span class="badge badge-success">6</span></a>
+                    <div id="submenu-2" class="collapse submenu">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/availableRequest" routerLink="/availableRequest" >Available Requests</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/myRequest" routerLink="/myRequest">My Requests</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="lecturerMenu">
+                        <a class="nav-link" aria-expanded="false" href="/staffRequest" routerLink='/staffRequest'>
+                        <i class="fas fa-fw fa-table"></i>Recomandation Requests</a>
+                </li>
+                <li class="nav-item" *ngIf="accountantMenu">
+                        <a class="nav-link" aria-expanded="false" href="/transcriptPage" routerLink='/transcriptPage'>
+                        <i class="fas fa-fw fa-table"></i>Transcript Requests</a>
+                </li>
+                <li class="nav-item" *ngIf="accountantMenu">
+                        <a class="nav-link" aria-expanded="false" href="/certificatePage" routerLink="/certificatePage">
+                        <i class="fas fa-fw fa-table"></i>Certificate Requests</a>
+                </li>
+               
+                <li class="nav-item" *ngIf="adminMenu">
+                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4"
+                     aria-controls="submenu-4"><i class="fas fa-fw fa-file"></i>Staff</a>
+                    <div id="submenu-4" class="collapse submenu" >
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/staff_registration" routerLink="/staff_registration">Registor Staff</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/staff_list" routerLink="/staff_list">Staff List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+               
+                <li class="nav-item" *ngIf="adminMenu">
+                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">
+                        <i class="fas fa-fw fa-map-marker-alt"></i>Student</a>
+                    <div id="submenu-5" class="collapse submenu" >
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/student_registration" routerLink="/student_registration">Registor Student</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/student_list" routerLink="/student_list">Student List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="adminMenu">
+                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" 
+                    aria-controls="submenu-6"><i class="fas fa-f fa-folder"></i>Users</a>
+                    <div id="submenu-6" class="collapse submenu" >
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/studentAccount" routerLink="/studentAccount">Student Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/staffAccount" routerLink="/staffAccount">Staff Users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

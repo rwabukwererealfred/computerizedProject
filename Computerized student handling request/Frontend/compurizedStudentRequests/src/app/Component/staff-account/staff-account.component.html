@@ -1,0 +1,68 @@
+<div class="dashboard-main-wrapper">
+    <div class="dashboard-header">
+        <app-header></app-header>
+    </div>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <div class="container-fluid  dashboard-content">
+                <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                        success: {{message}}
+                </div>
+            <div class="row">
+
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Staff Account List</h5>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Staff id</th>
+                                        <th scope="col">Names</th>
+                                        <th scope="col">username</th>
+                                        <th scope="col">Faculty</th>
+                                       
+                                        <th scope="col">Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let staff of staffAccount">
+                                        <td scope="row">{{staff.staff.id}}</td>
+                                        <td>{{staff.staff.firstName}} {{staff.staff.lastName}}</td>
+                                        <td>{{staff.username}}</td>
+                                      
+                                        <td>{{staff.staff.faculty.faculty.name}}</td>
+                                        
+                                        <td><input class="btn btn-primary" (click)="openDialog(staff)" value="Add Roles" style="width: 110px;">
+                                          &nbsp;
+                                            <input class="btn btn-success" (click)="openRolesDialog(staff.id)" value="Remove Role" style="width: 110px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end hoverable table -->
+                <!-- ============================================================== -->
+
+            </div>
+
+
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+
+    </div>
+</div>

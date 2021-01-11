@@ -1,0 +1,77 @@
+<div class="dashboard-main-wrapper">
+        <div class="dashboard-header">
+           <app-header></app-header>
+          </div>
+          
+         <div class="nav-left-sidebar sidebar-dark">
+              <app-menu></app-menu>
+          </div>
+         
+          <div class="dashboard-wrapper">
+              <div class="container-fluid  dashboard-content">
+                 
+                  <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="page-header">
+                              <h2 class="pageheader-title">Thank for Logged in {{first}} </h2>
+                              <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                              <div class="page-breadcrumb">
+                                  user login
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <div class="page-breadcrumb">
+                                  <input type="button" style="width:600px" class="btn btn-primary"
+                                   value="Recommendation" routerLink="/staff_list">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="page-header">
+                                    <div class="page-breadcrumb">
+                                      <input type="button" style="width:600px" class="btn btn-secondary" value="Internship" (click)="openInternship()">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                      
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                <div class="page-header">
+                                    <div class="page-breadcrumb">
+                                      <input type="button" (click)="openA1Certificate()" style="width:400px" class="btn btn-secondary" value="A1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                    <div class="page-header">
+                                        <div class="page-breadcrumb">
+                                          <input type="button" (click)="openTranscriptDialog()" style="width:400px" class="btn btn-success" value="Transcript">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                        <div class="page-header">
+                                            <div class="page-breadcrumb">
+                                              <input type="button" style="width:400px" class="btn btn-primary" value="Certificate of Attendance" (click)
+                                              ="openAttendanceCertificate()">
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                  
+                 
+                 
+              </div>
+              <div class="footer">
+                  <app-footer></app-footer>
+              </div>
+             
+          </div>
+       </div>
+       

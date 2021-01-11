@@ -1,0 +1,259 @@
+<div class="dashboard-main-wrapper">
+        <div class="dashboard-header">
+           <app-header></app-header>
+          </div>
+          
+         <div class="nav-left-sidebar sidebar-dark">
+              <app-menu></app-menu>
+          </div>
+         
+          <div class="dashboard-wrapper" *ngIf="accountantMenu">
+              <div class="container-fluid  dashboard-content1">
+                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                           {{message}}
+                        </div>
+                    <div class="row">
+    
+                            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Accountant Account</h5>
+                                    <div class="card-body">
+                                            <mat-tab-group>
+                                                    <mat-tab label="New Certificate Request({{accountantNewCertificate?.length}})">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th scope="col">Student id</th>
+                                                    <th scope="col">Student Names</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">status</th>
+                                                    <th scope="col">Bank slip</th>
+                                                    <th scope="col">Option</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let reco of accountantNewCertificate">
+                                                    <td>{{reco.student.id}}</td>
+                                                    <td>{{reco.student.firstName}} {{reco.student.lastName}}</td>
+                                                    <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td style="color: blue;">{{reco.category}}</td>
+                                                    <td><div style="background-color: aqua; color: black; border-radius: 10px; text-align: center;"> {{reco.status}}</div></td>
+                                                    <td> <a style="color: blue; cursor: pointer;" (click)="downloadBankslip(reco.bankslip.id)">
+                                                            <i class="fa fa-download"></i>
+                                                            <span>Download File</span>
+                                                        </a></td>
+                                                    <td>
+                                                       <a style="color: blue; cursor: pointer;" (click)="openApproveDiaolog(reco)">
+                                                           <i class="fa fa-check"></i>
+                                                           <span>Approve</span>
+                                                       </a>&nbsp;
+                                                       <a style="color: blue; cursor: pointer;" (click)="openRejectDiaolog(reco)">
+                                                            <i class="fa fa-trash"></i>
+                                                            <span>Reject</span>
+                                                        </a>
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                    <mat-tab label="Rejected Certificate Request({{accountantRejectedCertificate?.length}})">
+                                                      
+                                            <table class="table table-hover">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th scope="col">Student id</th>
+                                                        <th scope="col">Student Names</th>
+                                                        <th scope="col">Request Date</th>
+                                                        <th scope="col">Category</th>
+                                                        <th scope="col">status</th>
+                                                        <th scope="col">Bank slip</th>
+                                                        <th scope="col">Comment</th>
+                                                       
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let reco of accountantRejectedCertificate">
+                                                        <td>{{reco.student.id}}</td>
+                                                        <td>{{reco.student.firstName}} {{reco.student.lastName}}</td>
+                                                        <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                        <td style="color: blue;">{{reco.category}}</td>
+                                                        <td><div style="background-color: aqua; color: black; border-radius: 10px; text-align: center;"> {{reco.status}}</div></td>
+                                                        <td> <a style="color: blue; cursor: pointer;" (click)="downloadBankslip(reco.bankslip.id)">
+                                                                <i class="fa fa-download"></i>
+                                                                <span>Download Files</span>
+                                                            </a></td>
+                                                            <td>{{reco.commennt}}</td>
+                                                    </tr>
+                                                </tbody>
+                                                
+                                            </table>
+                                        </mat-tab>
+                                </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                  
+                 
+                 
+              </div>
+    
+              <div class="container-fluid  .dashboard-content1">
+                
+                    <div class="row">
+    
+                            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Approved Request</h5>
+                                    <div class="card-body">
+                                            <mat-tab-group>
+                                                    <mat-tab label="Certificate">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th scope="col">Student id</th>
+                                                    <th scope="col">Student Names</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Bank slip Number</th>
+                                                    <th scope="col">Amount</th>
+                                                    <th scope="col">Status</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let reco of accountantApprovedCertificate">
+                                                    <td>{{reco?.student?.id}}</td>
+                                                    <td>{{reco?.student?.firstName}} {{reco?.student?.lastName}}</td>
+                                                    <td>{{reco?.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td style="color: blue;">{{reco?.category}}</td>
+                                                    <td>{{reco?.bankslip?.banksleepNumber}}</td>
+                                                    <td>{{reco?.amount}} Rwf</td>
+                                                    <td>
+                                                        <div style="background-color:darkcyan; color: black; border-radius: 10px; text-align: center;">
+                                                             {{reco?.status}}</div>
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                  
+                 
+                 
+              </div>
+              <div class="footer">
+                  <app-footer></app-footer>
+              </div>
+             
+          </div>
+          <div class="dashboard-wrapper" *ngIf="registror">
+                <div class="container-fluid  dashboard-content1">
+                      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                             {{message}}
+                          </div>
+                      <div class="row">
+      
+                              <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                                  <div class="card">
+                                      <h5 class="card-header">Registrar Account</h5>
+                                      <div class="card-body">
+                                              <mat-tab-group>
+                                                      <mat-tab label="New Certificate Request({{newRegistrarCertificate?.length}})">
+                                                        
+                                          <table class="table table-hover">
+                                              <thead>
+                                                  <tr>
+                                                      <th scope="col">Student id</th>
+                                                      <th scope="col">Student Names</th>
+                                                      <th scope="col">Request Date</th>
+                                                      <th scope="col">Category</th>
+                                                      <th scope="col">status</th>
+                                                      <th scope="col">File</th>
+                                                      
+                                                     
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr *ngFor="let reco of newRegistrarCertificate">
+                                                      <td>{{reco.student.id}}</td>
+                                                      <td>{{reco.student.firstName}} {{reco.student.lastName}}</td>
+                                                      <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                      <td style="color: blue;">{{reco.category}}</td>
+                                                      <td><div style="background-color: aqua; color: black; border-radius: 10px; text-align: center;"> {{reco.status}}</div></td>
+                                                      <td> <a style="color: blue; cursor: pointer;" (click)="openUploadTranscriptDiaolog(reco)">
+                                                              <i class="fa fa-download"></i>
+                                                              <span>Upload Certificate</span>
+                                                          </a></td>
+                                                    
+                                                     
+                                                  </tr>
+                                              </tbody>
+                                              
+                                          </table>
+                                      </mat-tab>
+                                      <mat-tab label="Approved Certificate Request({{registrarConfirmedCertificate?.length}})">
+                                                        
+                                              <table class="table table-hover">
+                                                  <thead>
+                                                      <tr>
+                                                          <th scope="col">Student id</th>
+                                                          <th scope="col">Student Names</th>
+                                                          <th scope="col">Request Date</th>
+                                                          <th scope="col">Category</th>
+                                                          <th scope="col">status</th>
+                                                          <th scope="col">Bank slip</th>
+                                                         
+                                                         
+                                                         
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr *ngFor="let reco of registrarConfirmedCertificate">
+                                                          <td>{{reco.student.id}}</td>
+                                                          <td>{{reco.student.firstName}} {{reco.student.lastName}}</td>
+                                                          <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                          <td>{{reco.category}}</td>
+                                                          <td><div style="background-color: aqua; color: black; border-radius: 10px; text-align: center;"> {{reco.status}}</div></td>
+                                                          <td> <a style="color: blue; cursor: pointer;" (click)="downloadCertificate(reco.id)">
+                                                                  <i class="fa fa-download"></i>
+                                                                  <span>Download File</span>
+                                                              </a></td>
+                                                              
+                                                      </tr>
+                                                  </tbody>
+                                                  
+                                              </table>
+                                          </mat-tab>
+                                  </mat-tab-group>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                          </div>
+                    
+                   
+                   
+                </div>
+                <div class="footer">
+                    <app-footer></app-footer>
+                </div>
+               
+            </div>
+       </div>
+       

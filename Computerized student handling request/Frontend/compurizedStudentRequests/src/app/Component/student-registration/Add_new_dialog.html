@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>Register new student</h2>
+<mat-dialog-content class="mat-typography">
+    <form>
+        <div class="form-group">
+            <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+                failed: {{ message }}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                well successfull saved
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">student Id</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="studentInfo.id">
+            </div>
+            <div class="form-group col-md-4">   
+                <button class="btn btn-primary form-control" style="margin-top: 25px;" (click)="searchStudent()">Search</button>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputPassword4">First Name</label>
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="studentInfo.firstName">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputAddress">Last Name</label>
+                <input type="text" class="form-control" name="lastName" [(ngModel)]="studentInfo.lastName">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputAddress">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="studentInfo.email">
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputAddress2">Phone Number</label>
+                <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="studentInfo.phoneNumber">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Gender</label>
+                <select class="form-control" name="gender" [(ngModel)]="studentInfo.gender">
+                    <option selected>Choose Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Faculty</label>
+                <select class="form-control" name="faculty" [(ngModel)]="faculty.id"
+                    (change)="selected($event.target.value)">
+                    <option value="0">Choose faculty</option>
+                    <option *ngFor="let fac of faculties" value="{{fac.id}}">{{fac.name}}</option>
+
+                </select>
+            </div> 
+        </div>
+        <div class="form-row">
+                <div class="form-group col-md-4">
+                        <label for="inputState">Department</label>
+        
+                        <select class="form-control" name="department" [(ngModel)]="facultyId" (change)="test()">
+                            <option value="0">choose department</option>
+                            <option *ngFor="let dept of departmentList" value="{{dept.id}}">{{dept.name}}</option>
+        
+                        </select>
+                    </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="save()">Record</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>

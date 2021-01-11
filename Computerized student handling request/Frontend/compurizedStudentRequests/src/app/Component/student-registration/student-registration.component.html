@@ -1,0 +1,66 @@
+<div class="dashboard-main-wrapper">
+    <div class="dashboard-header">
+       <app-header></app-header>
+      </div>
+      
+     <div class="nav-left-sidebar sidebar-dark">
+          <app-menu></app-menu>
+      </div>
+     
+      <div class="dashboard-wrapper">
+          <div class="container-fluid  dashboard-content">
+             
+              <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="page-header">
+                          <input type="submit" (click)="openDialog()" class="btn btn-primary" value="Add New"></div>
+                      </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Student Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Student id</th>
+                                                <th scope="col">First Name</th>
+                                                <th scope="col">Last Name</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Faculty</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let student of students">
+                                                <td>{{student.id}}</td>
+                                                <td>{{student.firstName}}</td>
+                                                <td>{{student.lastName}}</td>
+                                                <td>{{student.gender}}</td>
+                                                <td>{{student.email}}</td>
+                                                <td>{{student.phoneNumber}}</td>
+                                                <td>{{student.faculty.name}}</td>
+                                               
+                                            </tr>
+                                        </tbody>
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                  
+              </div>
+              
+             
+             
+          </div>
+          <div class="footer">
+              <app-footer></app-footer>
+          </div>
+         
+      </div>
+   </div>
+   

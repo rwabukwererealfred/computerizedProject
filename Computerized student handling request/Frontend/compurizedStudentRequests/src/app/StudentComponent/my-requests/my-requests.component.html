@@ -1,0 +1,217 @@
+<div class="dashboard-main-wrapper">
+        <div class="dashboard-header">
+           <app-header></app-header>
+          </div>
+          
+         <div class="nav-left-sidebar sidebar-dark">
+              <app-menu></app-menu>
+          </div>
+         
+          <div class="dashboard-wrapper">
+              <div class="container-fluid  dashboard-content">
+                
+                    <div class="row">
+
+                            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Student Table</h5>
+                                    <div class="card-body">
+                                            <mat-tab-group>
+                                                    <mat-tab label="Recommendation">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Staff id</th>
+                                                    <th scope="col">Staff Names</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">status</th>
+                                                    <th scope="col">Option</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let reco of recommandations">
+                                                    <td>{{reco.staff.id}}</td>
+                                                    <td>{{reco.staff.firstName}} {{reco.staff.lastName}}</td>
+                                                    <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td>
+                                                        <div *ngIf="reco.status =='New'" style="text-align: center; background-color: darkturquoise; color: black
+                                                        ; border-radius: 10px;">
+                                                        {{reco.status}}
+                                                    </div>
+                                                    <div *ngIf="reco.status =='Approved'" style="text-align: center; background-color: cadetblue; color:black; border-radius: 10px;">
+                                                        {{reco.status}}
+                                                    </div>
+                                                    <div *ngIf="reco.status =='Cancelled'" style="text-align: center; background-color: rgb(245, 7, 46); color:black; border-radius: 10px;">
+                                                            {{reco.status}}
+                                                        </div>
+                                                </td>
+                                                    <td>
+                                                        <div *ngIf="reco.status =='Approved'"> 
+                                                       <a (click)="download(reco.id)" style="color: blue; cursor: pointer;">
+                                                           <i class="fa fa-download"></i>&nbsp;
+                                                           <span>Download</span>
+                                                       </a>
+                                                        </div>
+                                                        <div *ngIf="reco.status =='New'" style="text-align: center; background-color:dodgerblue; color:black; border-radius: 10px;" > 
+                                                            Waiting...
+                                                        </div>
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                    <mat-tab label="Transcript">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Comment</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Option</th>
+                                                  
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let tra of transcriptList">
+                                                    <td>{{tra.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td>{{tra.commennt}}</td>
+                                                    
+                                                    <td>
+                                                        <div  style="text-align: center; background-color: darkturquoise; color: black
+                                                        ; border-radius: 10px;">
+                                                        {{tra.status}}
+                                                    </div>
+                                                </td>
+                                                    <td>
+                                                        <div *ngIf="tra.status =='Approved'"> 
+                                                       <a (click)="downloadTranscript(tra.id)" style="color: blue; cursor: pointer;">
+                                                           <i class="fa fa-download"></i>&nbsp;
+                                                           <span>Download</span>
+                                                       </a>
+                                                        </div>
+                                                        <div *ngIf="tra.status =='Applied' || tra.status =='Pending'" style="text-align: center; background-color:dodgerblue; color:black; border-radius: 10px;" > 
+                                                                Waiting...
+                                                        </div>
+                                                        
+                                                       
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                    <mat-tab label="Certificate">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Comment</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Option</th>
+                                                  
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let tra of certificateRequestList">
+                                                    <td>{{tra.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td>{{tra.category}}</td>
+                                                    <td>{{tra.commennt}}</td>
+                                                    
+                                                    <td>
+                                                        <div  style="text-align: center; background-color: darkturquoise; color: black
+                                                        ; border-radius: 10px;">
+                                                        {{tra.status}}
+                                                    </div>
+                                                </td>
+                                                    <td>
+                                                        <div *ngIf="tra.status =='Approved'"> 
+                                                       <a (click)="downloadCertificate(tra.id)" style="color: blue; cursor: pointer;">
+                                                           <i class="fa fa-download"></i>&nbsp;
+                                                           <span>Download</span>
+                                                       </a>
+                                                        </div>
+                                                        <div *ngIf="tra.status =='Applied' || tra.status =='Pending'" style="text-align: center; background-color:dodgerblue; color:black; border-radius: 10px;" > 
+                                                                Waiting...
+                                                        </div>
+                                                        
+                                                       
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                    <mat-tab label="Internship">
+                                                      
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Request Date</th>
+                                                        <th scope="col">Regarding To</th>
+                                                        <th scope="col">Company Name</th>
+                                                        <th scope="col">Description</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Option</th>
+                                                      
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let tra of internshipList">
+                                                        <td>{{tra.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                        <td>{{tra.regardingTo}}</td>
+                                                        <td>{{tra.companyName}}</td>
+                                                        <td>{{tra.description}}</td>
+                                                        <td>
+                                                            <div  style="text-align: center; background-color: darkturquoise; color: black
+                                                            ; border-radius: 10px;">
+                                                            {{tra.status}}
+                                                        </div>
+                                                    </td>
+                                                        <td>
+                                                            <div *ngIf="tra.status =='Approved'"> 
+                                                           <a (click)="downloadCertificate(tra.id)" style="color: blue; cursor: pointer;">
+                                                               <i class="fa fa-download"></i>&nbsp;
+                                                               <span>Download</span>
+                                                           </a>
+                                                            </div>
+                                                            <div *ngIf="tra.status =='Applied' || tra.status =='Pending'" style="text-align: center; background-color:dodgerblue; color:black; border-radius: 10px;" > 
+                                                                    Waiting...
+                                                            </div>
+                                                            
+                                                           
+                                                        </td>
+                                                       
+                                                    </tr>
+                                                </tbody>
+                                                
+                                            </table>
+                                        </mat-tab>
+                                </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                  
+                 
+                 
+              </div>
+              <div class="footer">
+                  <app-footer></app-footer>
+              </div>
+             
+          </div>
+       </div>
+       

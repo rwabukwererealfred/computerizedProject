@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>User Roles</h2>
+<mat-dialog-content class="mat-typography">
+    <form>
+        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            user Role is well successfull added
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+            Failed:{{message}}
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Select</th>
+                    <th scope="col">Role Names</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rol of roles">
+                   <td><input  type="checkbox" (change)="select($event.target.checked, rol)"> </td>
+                    <td>{{rol.role.name}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+        <button mat-button (click)="remove()">remove</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>

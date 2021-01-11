@@ -1,0 +1,22 @@
+.splash-container {
+    padding-top: 80px;
+    
+}
+.bg-white{
+    white-space: nowrap;
+    
+}
+#footer1{
+    display:inline-block;
+    width:185px;
+    white-space: normal;
+    font-size: 15px;
+
+}
+#footer2{
+    display:inline-block;
+    width:185px;
+    white-space: normal;
+    font-size: 15px;
+}
+       

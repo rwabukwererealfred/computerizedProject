@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>All Roles exists</h2>
+<mat-dialog-content class="mat-typography">
+    <form>
+       
+        <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+            Failed:{{messsage}}
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Role Names</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rol of role">
+                    <td scope="row">{{rol.id}}</td>
+                    <td>{{rol.name}}</td>
+                    <td>
+                        <input type="checkbox" [checked]="allChecked" (change)="selectOne($event.target.checked,rol)" />
+                    </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+
+        <h2 mat-dialog-title>Roles exist to this user</h2>
+        <table class="table table-hover">
+            <tbody>
+                <tr *ngFor="let rol of userRoleList1">
+                    <td>{{rol.role.name}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="saveUserRole()">Save</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>

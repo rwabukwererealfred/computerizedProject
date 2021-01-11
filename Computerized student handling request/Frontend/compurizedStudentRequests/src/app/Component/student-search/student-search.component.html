@@ -1,0 +1,76 @@
+<div class="dashboard-main-wrapper">
+    <div class="dashboard-header">
+        <app-header></app-header>
+    </div>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <div class="container-fluid  dashboard-content">
+
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <input class="form-control" type="text" placeholder="search By Staff Id" [(ngModel)]="studentId">
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <input type="button" class="btn btn-primary" value="Search" (click)="searchById()">
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                                <select  class="form-control" [(ngModel)]="faculty" (change)="searchByFaculty()">
+                                    <option value="0">Search By Faculty</option>
+                                    <option *ngFor="let fac of faculties" value="{{fac.id}}">{{fac.name}}</option>
+                                     
+                                      </select>
+                        </div>
+                    </div> 
+
+            </div>
+            <div class="row">
+
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Student Table</h5>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Student id</th>
+                                        <th scope="col">Names</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Faculty</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let student of studentList">
+                                        <td>{{student.id}}</td>
+                                        <td>{{student.firstName}} {{student.lastName}}</td>
+                                        <td>{{student.gender}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.faculty.faculty.name}}</td>
+                                       
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+
+    </div>
+</div>

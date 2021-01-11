@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Register new student</h2>
+<mat-dialog-content class="mat-typography">
+    <form>
+        <div class="form-group">
+            <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+                failed: {{ message }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Bank slip Amount</label>
+                <input type="Number" class="form-control" name="amount" [(ngModel)]="transcript.amount">
+            </div>
+            <div class="form-group col-md-4">
+                    <label for="inputPassword4">Bank slip Number</label>
+                    <input type="text" class="form-control" name="number" [(ngModel)]="number">
+                </div>
+
+        </div>
+        
+       
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="approveTranscript()">Approve</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>

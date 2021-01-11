@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Please provide comment of why request is rejected</h2>
+<mat-dialog-content class="mat-typography">
+    <form>
+        <div class="form-group">
+            <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+                failed: {{ message }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="comment">Provide Comment</label>
+                <textarea title="Provide Comments" rows="10"  class="form-control" name="commennt" [(ngModel)]="transcript.commennt"></textarea>
+            </div>
+           
+        </div>
+        
+       
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="rejectTranscript()">Reject</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>

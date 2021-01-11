@@ -1,0 +1,21 @@
+
+<mat-dialog-content class="mat-typography">
+
+        <form class="example-form">
+               <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+                        failed: {{ message }}
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                        well successfull sent!
+                    </div>
+                <mat-form-field class="example-full-width">
+                        <label class="btn btn-default">
+                                <input type="file" (change)="sendRequest.onFileChanged($event)"/>
+                        </label>
+                </mat-form-field>
+            </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+        <button mat-button (click)="approvedRequest()">Send</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>

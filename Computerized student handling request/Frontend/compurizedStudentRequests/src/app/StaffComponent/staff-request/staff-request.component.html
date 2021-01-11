@@ -1,0 +1,116 @@
+<div class="dashboard-main-wrapper">
+        <div class="dashboard-header">
+           <app-header></app-header>
+          </div>
+          
+         <div class="nav-left-sidebar sidebar-dark">
+              <app-menu></app-menu>
+          </div>
+         
+          <div class="dashboard-wrapper">
+              <div class="container-fluid  dashboard-content1">
+                
+                    <div class="row">
+
+                            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">New Request</h5>
+                                    <div class="card-body">
+                                            <mat-tab-group>
+                                                    <mat-tab label="Recommendation">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Student id</th>
+                                                    <th scope="col">Student Names</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">status</th>
+                                                    <th scope="col">Option</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let reco of staffRecommandationList">
+                                                    <td>{{reco.student.id}}</td>
+                                                    <td>{{reco.student.firstName}} {{reco.student.lastName}}</td>
+                                                    <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td>{{reco.description}}</td>
+                                                    <td><div style="background-color: aqua; color: black; border-radius: 10px; text-align: center;"> {{reco.status}}</div></td>
+                                                    <td>
+                                                        <input type="button" value="Upload" class="btn btn-primary" (click)="openDialog(reco)">
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                  
+                 
+                 
+              </div>
+
+              <div class="container-fluid  .dashboard-content1">
+                
+                    <div class="row">
+
+                            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Approved Request</h5>
+                                    <div class="card-body">
+                                            <mat-tab-group>
+                                                    <mat-tab label="Recommendation">
+                                                      
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Student id</th>
+                                                    <th scope="col">Student Names</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">status</th>
+                                                    <th scope="col">Option</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let reco of staffApprovedRecoList">
+                                                    <td>{{reco.student.id}}</td>
+                                                    <td>{{reco.student.firstName}} {{reco.student.lastName}}</td>
+                                                    <td>{{reco.requestDate | date:'HH:mm MMM-dd-yyyy'}}</td>
+                                                    <td>{{reco.description}}</td>
+                                                    <td><div style="background-color:darkcyan; color: black; border-radius: 10px; text-align: center;"> {{reco.status}}</div></td>
+                                                    <td>
+                                                        <input type="button" value="View File" class="btn btn-primary" >
+                                                    </td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </mat-tab>
+                                </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                  
+                 
+                 
+              </div>
+              <div class="footer">
+                  <app-footer></app-footer>
+              </div>
+             
+          </div>
+       </div>
+       

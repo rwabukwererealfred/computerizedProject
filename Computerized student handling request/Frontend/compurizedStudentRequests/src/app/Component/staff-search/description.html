@@ -1,0 +1,20 @@
+
+<mat-dialog-content class="mat-typography">
+
+        <form class="example-form">
+               <div class="alert alert-danger" role="alert" *ngIf="failedMessage">
+                        failed: {{ message }}
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                        well successfull sent!
+                    </div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput name="desc" [(ngModel)]="description"  rows="10" maxlength="250"></textarea>
+                </mat-form-field>
+            </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+        <button mat-button (click)="sendRequest()">Send</button>
+    <button mat-button (click)="dialogRef.close('close')">Close</button>
+</mat-dialog-actions>
